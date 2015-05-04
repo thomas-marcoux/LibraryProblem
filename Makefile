@@ -3,7 +3,7 @@ NAME=	library
 CC=	g++
 
 CFLAGS=	-Wall -g -lmysqlcppconn
-#-I/usr/include/cppconn -L/usr/lib -lmysqlcppconn
+#-I/usr/include/cppconn -L/usr/lib
 
 RM=	rm -fv
 

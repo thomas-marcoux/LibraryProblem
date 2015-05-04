@@ -3,6 +3,6 @@
 
 int	main()
 {
-  Connector	c();
+  Connector	c = Connector();
   return 0;
 }
