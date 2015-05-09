@@ -2,7 +2,9 @@
 #define CONNECTOR_H
 
 #include <string>
+#include <cppconn/statement.h>
 #include "mysql_driver.h"
+#include "mysql_connection.h"
 
 #define DATABASE_NAME	"Library"
 #define USER		"root"
