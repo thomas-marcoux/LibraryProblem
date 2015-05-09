@@ -2,8 +2,7 @@ NAME=	library
 
 CC=	g++
 
-CFLAGS=	-Wall -g -lmysqlcppconn
-#-I/usr/include/cppconn -L/usr/lib
+CFLAGS=	-Wall -g -lmysqlcppconn `pkg-config --cflags --libs gtk+-2.0`
 
 RM=	rm -fv
 
