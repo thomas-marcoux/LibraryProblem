@@ -29,10 +29,11 @@ CREATE TABLE `book` (
   `author` varchar(35) DEFAULT NULL,
   `year` int(4) DEFAULT NULL,
   `borrowedBy` int(10) DEFAULT NULL,
+  `isbn` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`bookId`),
   KEY `borrowedBy` (`borrowedBy`),
   CONSTRAINT `book_ibfk_1` FOREIGN KEY (`borrowedBy`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1334567891 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +42,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES (1204557890,'Hipster Stuff','Fashion','Ian Turnbow',1995,NULL,'0987774321'),(1230057890,'Who Needs Shoes','Life Style','Allen Lunnie',2011,NULL,'0987711321'),(1233557890,'Pierce the Heavens','Romance','Kamina',2000,NULL,'0987754421'),(1234557890,'Party Lacey','Decore','Lacey Hines',2015,NULL,'0987754321'),(1234559890,'What are Drugs','Informative','Trena',1989,NULL,'0987765321'),(1234566890,'The Allen Shrug','Speech','Allen Lunnie',1963,NULL,'0976654321'),(1234567890,'Cookin With Bacon','Cooking','Tahmersu Bacon',1969,NULL,'0987654321'),(1234587890,'Maximum Squats','Sports','Kinder',2014,NULL,'0987744321'),(1244567890,'The Life of Amber','Novel','Bobbi',1849,NULL,'0988654321'),(1266657890,'My Escape','Mystery','Juli Kim',2010,NULL,'0287758321'),(1276558890,'Two Feet Under','Short Story','Ginner Peters',1993,NULL,'0787737321'),(1334567890,'The Best Database Party Ever','Database','Chiang',1999,NULL,'0887654321');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,4 +82,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-08 22:19:13
+-- Dump completed on 2015-05-08 23:21:19
