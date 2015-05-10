@@ -16,6 +16,7 @@ class	Connector
   sql::mysql::MySQL_Driver	*driver;
   sql::Connection		*con;
   sql::Statement		*stmt;
+  sql::ResultSet		*res;
 
  public:
   Connector();
