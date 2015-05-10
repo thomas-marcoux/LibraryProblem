@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         library.cpp \
-    checkoutwindow.cpp
+    checkoutwindow.cpp \
+    createconnection.cpp
 
 HEADERS  += library.h \
-    checkoutwindow.h
+    checkoutwindow.h \
+    createconnection.h
 
 FORMS    += library.ui \
     checkoutwindow.ui

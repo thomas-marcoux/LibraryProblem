@@ -1,6 +1,7 @@
 #ifndef CHECKOUTWINDOW_H
 #define CHECKOUTWINDOW_H
 
+#include "createConnection.h"
 #include <QDialog>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlError>
