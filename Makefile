@@ -2,11 +2,12 @@ NAME=	library
 
 CC=	g++
 
-CFLAGS=	-Wall -g -lmysqlcppconn `pkg-config --cflags --libs gtk+-2.0`
+CFLAGS=	-Wall -g -Wno-write-strings -lmysqlcppconn `pkg-config --cflags --libs gtk+-2.0`
 
 RM=	rm -fv
 
 SRC=	Connector.cpp		\
+	Window.cpp		\
 	main.cpp
 
 %.o: %.cpp
