@@ -22,31 +22,38 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QPushButton" name="addRemoveButton">
       <property name="text">
        <string>Add/Remove a book from the library</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="3" column="0">
      <widget class="QPushButton" name="listAuthorSubButton">
       <property name="text">
        <string>List books by an author in a subject</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
+    <item row="5" column="0">
+     <widget class="QPushButton" name="lastBorrowedButton">
+      <property name="text">
+       <string>Find out which borrower last checked out a book</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
      <widget class="QPushButton" name="listBorrowerBooksButton">
       <property name="text">
        <string>List books checked out by a borrower</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
-     <widget class="QPushButton" name="lastBorrowedButton">
+    <item row="1" column="0">
+     <widget class="QPushButton" name="returnBookButton">
       <property name="text">
-       <string>Find out which borrower last checked out a book</string>
+       <string>Return a book</string>
       </property>
      </widget>
     </item>

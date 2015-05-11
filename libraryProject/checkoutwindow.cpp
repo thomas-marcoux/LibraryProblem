@@ -41,7 +41,7 @@ void checkOutWindow::on_buttonBox_accepted()
 
     if (isStaff){
         query.exec("SELECT numCheckedOut from user where id=" + borrowerId);
-        QInt numCheckedOut = query.value(0).toInt();
+        int numCheckedOut = query.value(0).toInt();
 
         if(query.next() && numCheckedOut < 10){
             query.exec ("UPDATE book SET borrowedBy=" + borrowerId + " WHERE bookId=" + bookId);

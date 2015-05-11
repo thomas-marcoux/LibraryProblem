@@ -47,3 +47,8 @@ void returnWindow::on_buttonBox_accepted()
         QMessageBox::information(this, tr("Library Database"), tr("You do not have access to this transaction"));
     }
 }
+
+void returnWindow::on_buttonBox_rejected()
+{
+    this->close();
+}

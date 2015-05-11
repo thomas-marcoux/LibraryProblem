@@ -5,6 +5,7 @@
 #include "listauthorinsub.h"
 #include "listcheckedout.h"
 #include "lastborrowed.h"
+#include "returnwindow.h"
 
 library::library(QWidget *parent) :
     QMainWindow(parent),
@@ -51,4 +52,11 @@ void library::on_lastBorrowedButton_clicked()
     lastBorrowed lastBorrowed;
     lastBorrowed.setModal(true);
     lastBorrowed.exec();
+}
+
+void library::on_returnBookButton_clicked()
+{
+    returnWindow returnWindow;
+    returnWindow.setModal(true);
+    returnWindow.exec();
 }

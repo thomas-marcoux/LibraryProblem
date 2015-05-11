@@ -41,9 +41,11 @@ void addRemoveWindow::on_addButton_clicked()
     qDebug() << query.lastError() << endl << isStaff;
 
     if (isStaff) {
-        query.exec ("INSERT INTO book VALUES (" + year + "," +  author + "," + subject + "," + isbn + "," + title + ")");
+        query.exec ("INSERT INTO book (year, author, subject, isbn, title) VALUES (" + year + "," +  author + "," + subject + "," + isbn + "," + title + ")");
         qDebug() << query.lastError();
-        QMessageBox::information(this, tr("Library Database"), tr("Transaction complete."));
+        query.exec("SELECT bookId WHERE isbn=" + isbn + "AND title=" + title);
+        query.last();
+        QMessageBox::information(this, tr("Library Database"), tr("Book added as Book ID " + query.value(0).toInt()));
     }
     else{
         QMessageBox::information(this, tr("Library Database"), tr("You do not have access to this transaction"));

@@ -36,6 +36,8 @@ private slots:
 
     void on_lastBorrowedButton_clicked();
 
+    void on_returnBookButton_clicked();
+
 private:
     Ui::library *ui;
 };
