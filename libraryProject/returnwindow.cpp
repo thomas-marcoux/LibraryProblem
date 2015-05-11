@@ -38,16 +38,29 @@ void returnWindow::on_buttonBox_accepted()
     qDebug() << query.lastError() << endl << isStaff;
 
     if (isStaff){
-        query.exec ("UPDATE book SET lastBorrowedBy=borrowedBy WHERE bookId=" + bookId);
+        query.exec("select borrowedBy from book where bookId=" + bookId);
         qDebug() << query.lastError();
-        query.exec ("UPDATE user SET numCheckedOut=numCheckedOut-1 WHERE id="+ borrowerId);
-        qDebug() << query.lastError();
-        QSqlQuery queryForName;
-        queryForName.exec("SELECT name, numCheckedOut FROM user where id=" + borrowerId);
-        queryForName.next();
-        QString msg = queryForName.value(0).toString() + " now has " + queryForName.value(1).toString() + " books checked out.";
-         QMessageBox::information(this, tr("Library Database"), msg);
+        query.next();
+        QString bookBorrowerId = query.value(0).toString();
+        int identicalIdCheck = QString::compare(borrowerId, bookBorrowerId, Qt::CaseInsensitive);
+        qDebug() << identicalIdCheck;
+        if (identicalIdCheck == 0){
+
+            query.exec ("UPDATE book SET lastBorrowedBy=borrowedBy WHERE bookId=" + bookId);
+            qDebug() << query.lastError();
+            query.exec ("UPDATE user SET numCheckedOut=numCheckedOut-1 WHERE id="+ borrowerId);
+            qDebug() << query.lastError();
+            QSqlQuery queryForName;
+            queryForName.exec("SELECT name, numCheckedOut FROM user where id=" + borrowerId);
+            queryForName.next();
+            QString msg = queryForName.value(0).toString() + " now has " + queryForName.value(1).toString() + " books checked out.";
+             QMessageBox::information(this, tr("Library Database"), msg);
+         }
+        else{
+            QMessageBox::information(this, tr("Library Database"), tr("That user hasn't borrowed that book."));
+        }
     }
+
     else{
         QMessageBox::information(this, tr("Library Database"), tr("You do not have access to this transaction"));
     }

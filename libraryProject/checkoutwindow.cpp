@@ -48,15 +48,25 @@ void checkOutWindow::on_buttonBox_accepted()
             qDebug() << numCheckedOut;
 
             if(numCheckedOut < 10){
-                query.exec ("UPDATE book SET borrowedBy=" + borrowerId + " WHERE bookId=" + bookId);
-                qDebug() << query.lastError();
-                query.exec ("UPDATE user SET numCheckedOut=numCheckedOut+1 WHERE id="+ borrowerId);
-                qDebug() << query.lastError();
-                QSqlQuery queryForName;
-                queryForName.exec("SELECT name, numCheckedOut FROM user where id=" + borrowerId);
-                queryForName.next();
-                QString msg = queryForName.value(0).toString() + " now has " + queryForName.value(1).toString() + " books checked out.";
-                 QMessageBox::information(this, tr("Library Database"), msg);
+                query.exec("Select borrowedBy from book where bookId=" + bookId);
+                query.next();
+                QString borrowedBy = query.value(0).toString();
+                qDebug() << borrowedBy;
+                if(borrowedBy.isEmpty()){
+
+                    query.exec ("UPDATE book SET borrowedBy=" + borrowerId + " WHERE bookId=" + bookId);
+                    qDebug() << query.lastError();
+                    query.exec ("UPDATE user SET numCheckedOut=numCheckedOut+1 WHERE id="+ borrowerId);
+                    qDebug() << query.lastError();
+                    QSqlQuery queryForName;
+                    queryForName.exec("SELECT name, numCheckedOut FROM user where id=" + borrowerId);
+                    queryForName.next();
+                    QString msg = queryForName.value(0).toString() + " now has " + queryForName.value(1).toString() + " books checked out.";
+                    QMessageBox::information(this, tr("Library Database"), msg);
+                }
+                else{
+                    QMessageBox::information(this, tr("Library Database"), tr("That book is already checked out."));
+                }
             }
 
             else {

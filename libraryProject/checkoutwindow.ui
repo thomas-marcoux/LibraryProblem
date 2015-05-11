@@ -59,6 +59,11 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>userIdEdit</tabstop>
+  <tabstop>borrowerIdEdit</tabstop>
+  <tabstop>bookIdEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

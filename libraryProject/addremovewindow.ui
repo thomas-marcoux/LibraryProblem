@@ -13,207 +13,111 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>21</y>
-     <width>36</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>User ID</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="userIdEdit">
-   <property name="geometry">
-    <rect>
-     <x>106</x>
-     <y>21</y>
-     <width>281</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="addButton">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>250</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Add book</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="removeButton">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>320</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Remove book</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>59</y>
-     <width>20</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Title</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>97</y>
-     <width>33</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Author</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>135</y>
-     <width>70</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Year Published</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>173</y>
-     <width>36</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Subject</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>211</y>
-     <width>23</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ISBN</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="authorEdit">
-   <property name="geometry">
-    <rect>
-     <x>106</x>
-     <y>97</y>
-     <width>281</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="yearEdit">
-   <property name="geometry">
-    <rect>
-     <x>106</x>
-     <y>135</y>
-     <width>281</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="subjectEdit">
-   <property name="geometry">
-    <rect>
-     <x>106</x>
-     <y>173</y>
-     <width>281</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="isbnEdit">
-   <property name="geometry">
-    <rect>
-     <x>106</x>
-     <y>211</y>
-     <width>281</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="titleEdit">
-   <property name="geometry">
-    <rect>
-     <x>106</x>
-     <y>59</y>
-     <width>281</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>13</x>
-     <y>290</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Book ID</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="bookIdEdit">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>290</y>
-     <width>281</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>305</x>
-     <y>320</y>
-     <width>81</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel</set>
-   </property>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="4" column="1" colspan="2">
+    <widget class="QLineEdit" name="subjectEdit"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Title</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>User ID</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <widget class="QLineEdit" name="authorEdit"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Year Published</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QLineEdit" name="userIdEdit"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Author</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QLineEdit" name="titleEdit"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Subject</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>ISBN</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="2">
+    <widget class="QLineEdit" name="isbnEdit"/>
+   </item>
+   <item row="3" column="1" colspan="2">
+    <widget class="QLineEdit" name="yearEdit"/>
+   </item>
+   <item row="7" column="1" colspan="2">
+    <widget class="QLineEdit" name="bookIdEdit"/>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Book ID</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <widget class="QPushButton" name="removeButton">
+     <property name="text">
+      <string>Remove book</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QPushButton" name="addButton">
+     <property name="text">
+      <string>Add book</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
+ <tabstops>
+  <tabstop>userIdEdit</tabstop>
+  <tabstop>titleEdit</tabstop>
+  <tabstop>authorEdit</tabstop>
+  <tabstop>yearEdit</tabstop>
+  <tabstop>subjectEdit</tabstop>
+  <tabstop>isbnEdit</tabstop>
+  <tabstop>addButton</tabstop>
+  <tabstop>bookIdEdit</tabstop>
+  <tabstop>removeButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
