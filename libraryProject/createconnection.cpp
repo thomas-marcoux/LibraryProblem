@@ -30,8 +30,8 @@ bool createConnection(){
     else {
         QSqlQuery query;
         query.exec("SELECT * FROM user");
+        query.next();
         QString result = query.value(0).toString();
-        qDebug() << result << query.lastError();
 
     }
     return true;

@@ -1,14 +1,29 @@
 #include "addremovewindow.h"
 #include "ui_addremovewindow.h"
 
-AddRemoveWindow::AddRemoveWindow(QWidget *parent) :
+addRemoveWindow::addRemoveWindow(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AddRemoveWindow)
+    ui(new Ui::addRemoveWindow)
 {
     ui->setupUi(this);
 }
 
-AddRemoveWindow::~AddRemoveWindow()
+addRemoveWindow::~addRemoveWindow()
 {
     delete ui;
+}
+
+void addRemoveWindow::on_addButton_clicked()
+{
+    QString userId  =    ui->userIdEdit->text(),
+            title   =    ui->titleEdit->text(),
+            year    =    ui->yearEdit->text(),
+            author  =    ui->authorEdit->text(),
+            isbn    =    ui->isbnEdit->text(),
+            subject =    ui->subjectEdit->text();
+
+    QSqlQuery query;
+
+    query.exec ("INSERT INTO book VALUES (" + year + "," +  author + "," + subject + "," + isbn + "," + title + ")");
+
 }
