@@ -15,11 +15,20 @@ TEMPLATE = app
 SOURCES += main.cpp\
         library.cpp \
     checkoutwindow.cpp \
-    createconnection.cpp
+    createconnection.cpp \
+    returnwindow.cpp \
+    addremovewindow.cpp \
+    listauthorinsub.cpp
 
 HEADERS  += library.h \
     checkoutwindow.h \
-    createconnection.h
+    createconnection.h \
+    returnwindow.h \
+    addremovewindow.h \
+    listauthorinsub.h
 
 FORMS    += library.ui \
-    checkoutwindow.ui
+    checkoutwindow.ui \
+    returnwindow.ui \
+    addremovewindow.ui \
+    listauthorinsub.ui

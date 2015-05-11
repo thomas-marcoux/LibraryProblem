@@ -30,11 +30,7 @@ checkOutWindow::~checkOutWindow()
 void checkOutWindow::on_buttonBox_accepted()
 {
     QSqlDatabase db;
-    /*if(!db.open()){
-        QMessageBox::information(this, tr("Library Database"), tr("Database error occured"));
-    }*/
 
-    //else{
         qDebug() << "Connected";
 
         QString userId = ui->userIdEdit->text(),
@@ -43,17 +39,19 @@ void checkOutWindow::on_buttonBox_accepted()
 
         QSqlQuery query;
 
-        query.exec ("SELECT isStaff from user where id=" + userId + ";");
+        query.exec ("SELECT isStaff from user where id=" + userId);
+        query.next();
         bool isStaff = query.value(0).toBool();
-        qDebug() << query.lastError();
+        qDebug() << query.lastError() << endl << isStaff;
 
         if (isStaff){
-            query.exec ("UPDATE book SET borrowedBy=" + borrowerId + "WHERE bookId=" + bookId + ";");
-            query.exec ("UPDATE user SET numCheckedOut=numCheckedOut+1 WHERE userId="+ borrowerId + ";");
+            query.exec ("UPDATE book SET borrowedBy=" + borrowerId + " WHERE bookId=" + bookId);
+            qDebug() << query.lastError();
+            query.exec ("UPDATE user SET numCheckedOut=numCheckedOut+1 WHERE id="+ borrowerId);
+            qDebug() << query.lastError();
         }
         else{
             QMessageBox::information(this, tr("Library Database"), tr("You do not have access to this transaction"));
         }
-    //}
 }
 
