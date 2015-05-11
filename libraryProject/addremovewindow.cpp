@@ -2,8 +2,6 @@
 #include "ui_addremovewindow.h"
 #include "createconnection.h"
 #include <QDebug>
-#include <QCoreApplication>
-#include <QApplication>
 #include <QtSql/QSql>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlDriver>
@@ -41,11 +39,12 @@ void addRemoveWindow::on_addButton_clicked()
     qDebug() << query.lastError() << endl << isStaff;
 
     if (isStaff) {
-        query.exec ("INSERT INTO book (year, author, subject, isbn, title) VALUES (" + year + "," +  author + "," + subject + "," + isbn + "," + title + ")");
+        query.exec ("INSERT INTO book (year, author, subject, isbn, title) VALUES (" + year + ", \"" +  author + "\", \"" + subject + "\", \"" + isbn + "\", \"" + title + "\")");
         qDebug() << query.lastError();
-        query.exec("SELECT bookId WHERE isbn=" + isbn + "AND title=" + title);
-        query.last();
-        QMessageBox::information(this, tr("Library Database"), tr("Book added as Book ID " + query.value(0).toInt()));
+        query.exec("select bookId from book ORDER BY bookId DESC LIMIT 1");
+        query.next();
+        QString msg = title + " has been added to the database as Book ID #" + query.value(0).toString();
+        QMessageBox::information(this, tr("Library Database"), msg);
     }
     else{
         QMessageBox::information(this, tr("Library Database"), tr("You do not have access to this transaction"));

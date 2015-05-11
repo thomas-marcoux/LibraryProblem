@@ -35,20 +35,23 @@ void listCheckedOut::on_buttonBox_accepted()
     bool isStaff = query.value(0).toBool();
 
     if (isStaff){
-        query.exec ("SELECT bookId, name FROM book where borrowedBy=" + borrowerId);
+        query.exec ("SELECT bookId, title FROM book where borrowedBy=" + borrowerId);
         qDebug() << query.lastError();
     }
     else {
-        query.exec ("SELECT bookId, name FROM book where borrowedBy=" + userId);
+        query.exec ("SELECT bookId, title FROM book where borrowedBy=" + userId);
         borrowerId = userId; //sets borrowerId to userId since non-staff can only check their checked out books
         qDebug() << query.lastError();
     }
 
     QString result;
     while(query.next()){
-        result = result + query.value(0).toString() + "\n";
+        result = result + query.value(0).toString() + " " + query.value(1).toString() + "\n";
     }
 
     query.exec ("SELECT name FROM user where id=" + borrowerId);
+    qDebug() << query.lastError();
+    query.next();
     result = query.value(0).toString() + "'s borrowed books:\n\n" + result;
+    QMessageBox::information(this, "Library Database", result);
 }

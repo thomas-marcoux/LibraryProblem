@@ -42,10 +42,16 @@ void returnWindow::on_buttonBox_accepted()
         qDebug() << query.lastError();
         query.exec ("UPDATE user SET numCheckedOut=numCheckedOut-1 WHERE id="+ borrowerId);
         qDebug() << query.lastError();
+        QSqlQuery queryForName;
+        queryForName.exec("SELECT name, numCheckedOut FROM user where id=" + borrowerId);
+        queryForName.next();
+        QString msg = queryForName.value(0).toString() + " now has " + queryForName.value(1).toString() + " books checked out.";
+         QMessageBox::information(this, tr("Library Database"), msg);
     }
     else{
         QMessageBox::information(this, tr("Library Database"), tr("You do not have access to this transaction"));
     }
+    this->close();
 }
 
 void returnWindow::on_buttonBox_rejected()

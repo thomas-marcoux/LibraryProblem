@@ -41,20 +41,28 @@ void checkOutWindow::on_buttonBox_accepted()
 
     if (isStaff){
         query.exec("SELECT numCheckedOut from user where id=" + borrowerId);
-        int numCheckedOut = query.value(0).toInt();
+        qDebug() << query.lastError();
+        if(query.next()){
 
-        if(query.next() && numCheckedOut < 10){
-            query.exec ("UPDATE book SET borrowedBy=" + borrowerId + " WHERE bookId=" + bookId);
-            qDebug() << query.lastError();
-            query.exec ("UPDATE user SET numCheckedOut=numCheckedOut+1 WHERE id="+ borrowerId);
-            qDebug() << query.lastError();
-            QMessageBox::information(this, tr("Library Database"), tr("Transaction complete."));
+            int numCheckedOut = query.value(0).toInt();
+            qDebug() << numCheckedOut;
+
+            if(numCheckedOut < 10){
+                query.exec ("UPDATE book SET borrowedBy=" + borrowerId + " WHERE bookId=" + bookId);
+                qDebug() << query.lastError();
+                query.exec ("UPDATE user SET numCheckedOut=numCheckedOut+1 WHERE id="+ borrowerId);
+                qDebug() << query.lastError();
+                QSqlQuery queryForName;
+                queryForName.exec("SELECT name, numCheckedOut FROM user where id=" + borrowerId);
+                queryForName.next();
+                QString msg = queryForName.value(0).toString() + " now has " + queryForName.value(1).toString() + " books checked out.";
+                 QMessageBox::information(this, tr("Library Database"), msg);
+            }
+
+            else {
+                QMessageBox::information(this, tr("Library Database"), tr("User has too many books checked out already."));
+            }
         }
-
-        else if (numCheckedOut >= 10){
-            QMessageBox::information(this, tr("Library Database"), tr("User has too many books checked out already."));
-        }
-
         else{
             QMessageBox::information(this, tr("Library Database"), tr("User does not exist."));
         }

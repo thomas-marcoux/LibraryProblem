@@ -39,9 +39,10 @@ void lastBorrowed::on_buttonBox_accepted()
     if(isStaff){
         query.exec("SELECT lastBorrowedBy FROM book WHERE bookId=" + bookId);
         qDebug() << query.lastError();
-
-        if(query.next()){
-            query.exec("SELECT name FROM user WHERE id=" + query.value(0).toInt());
+        query.next();
+        if(query.value(0).toInt() != 0 && query.value(0).toString() != ""){
+            queryForName.exec("SELECT name FROM user WHERE id=" + query.value(0).toString());
+            queryForName.next();
             QString result = "Book ID " + bookId + " was last borrowed by " + queryForName.value(0).toString() + ".";
             QMessageBox::information(this, tr("Library Database"), result);
         }
