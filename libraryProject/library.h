@@ -2,7 +2,6 @@
 #define LIBRARY_H
 
 #include <QMainWindow>
-#include "checkoutwindow.h"
 #include <QDialog>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlError>
@@ -30,6 +29,12 @@ public:
 private slots:
     void on_checkOutButton_clicked();
     void on_addRemoveButton_clicked();
+
+    void on_listAuthorSubButton_clicked();
+
+    void on_listBorrowerBooksButton_clicked();
+
+    void on_lastBorrowedButton_clicked();
 
 private:
     Ui::library *ui;

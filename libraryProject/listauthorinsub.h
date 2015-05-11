@@ -15,6 +15,9 @@ public:
     explicit listAuthorInSub(QWidget *parent = 0);
     ~listAuthorInSub();
 
+private slots:
+    void on_buttonBox_accepted();
+
 private:
     Ui::listAuthorInSub *ui;
 };

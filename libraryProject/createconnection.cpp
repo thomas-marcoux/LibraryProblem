@@ -32,6 +32,7 @@ bool createConnection(){
         query.exec("SELECT * FROM user");
         query.next();
         QString result = query.value(0).toString();
+        qDebug() << result;
 
     }
     return true;

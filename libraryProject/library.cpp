@@ -1,6 +1,10 @@
 #include "library.h"
 #include "ui_library.h"
 #include "checkoutwindow.h"
+#include "addremovewindow.h"
+#include "listauthorinsub.h"
+#include "listcheckedout.h"
+#include "lastborrowed.h"
 
 library::library(QWidget *parent) :
     QMainWindow(parent),
@@ -23,7 +27,28 @@ void library::on_checkOutButton_clicked()
 
 void library::on_addRemoveButton_clicked()
 {
-    checkOutWindow checkOutWindow;
-    checkOutWindow.setModal(true);
-    checkOutWindow.exec();
+    addRemoveWindow addRemoveWindow;
+    addRemoveWindow.setModal(true);
+    addRemoveWindow.exec();
+}
+
+void library::on_listAuthorSubButton_clicked()
+{
+    listAuthorInSub listAuthorInSub;
+    listAuthorInSub.setModal(true);
+    listAuthorInSub.exec();
+}
+
+void library::on_listBorrowerBooksButton_clicked()
+{
+    listCheckedOut listCheckedOut;
+    listCheckedOut.setModal(true);
+    listCheckedOut.exec();
+}
+
+void library::on_lastBorrowedButton_clicked()
+{
+    lastBorrowed lastBorrowed;
+    lastBorrowed.setModal(true);
+    lastBorrowed.exec();
 }

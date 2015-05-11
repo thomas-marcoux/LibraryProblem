@@ -1,6 +1,18 @@
 #include "listauthorinsub.h"
 #include "ui_listauthorinsub.h"
 
+#include <QDebug>
+#include <QCoreApplication>
+#include <QApplication>
+#include <QtSql/QSql>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlDriver>
+#include <QtSql/QSqlQuery>
+#include <QString>
+#include <QMessageBox>
+#include <QtSql/QSqlError>
+
+
 listAuthorInSub::listAuthorInSub(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::listAuthorInSub)
@@ -15,23 +27,19 @@ listAuthorInSub::~listAuthorInSub()
 
 void listAuthorInSub::on_buttonBox_accepted()
 {
-    QString userId  =    ui->userIdEdit->text(),
-            author  =    ui->authorEdit->text(),
+    QString author  =    ui->authorEdit->text(),
             subject =    ui->subjectEdit->text();
 
     QSqlQuery query;
 
-    query.exec ("SELECT isStaff from user where id=" + userId);
-    query.next();
-    bool isStaff = query.value(0).toBool();
-    qDebug() << query.lastError() << endl << isStaff;
+    query.exec ("SELECT title FROM book WHERE subject=\"" + subject + "\" AND author=\"" + author + "\"");
+    qDebug() << query.lastError();
+    QString resultString = "List of books in subject \"" + subject + "\" by author \"" + author + "\":\n\n";
 
-    if (isStaff) {
-        query.exec ("SELECT author, subject WHERE subject =$subject;");
-        qDebug() << query.lastError();
-        QMessageBox::information(this, tr("Library Database"), tr("Transaction complete."));
+    while (query.next()){
+
+        resultString = resultString + query.value(0).toString() + "\n";
+        qDebug() << resultString;
     }
-    else{
-        QMessageBox::information(this, tr("Library Database"), tr("You do not have access to this transaction"));
-    }
+    QMessageBox::information(this, "Library Database", resultString);
 }

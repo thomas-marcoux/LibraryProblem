@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>listAuthorInSub</class>
- <widget class="QDialog" name="listAuthorInSub">
+ <class>lastBorrowed</class>
+ <widget class="QDialog" name="lastBorrowed">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,30 +17,30 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Author</string>
+      <string>User ID</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="authorEdit"/>
+   <item row="0" column="1" colspan="2">
+    <widget class="QLineEdit" name="userIdEdit"/>
    </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="subjectEdit"/>
+   <item row="1" column="2">
+    <widget class="QLineEdit" name="bookIdEdit"/>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Subject</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
+   <item row="2" column="1" colspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Book ID</string>
      </property>
     </widget>
    </item>
@@ -51,7 +51,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>listAuthorInSub</receiver>
+   <receiver>lastBorrowed</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -67,7 +67,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>listAuthorInSub</receiver>
+   <receiver>lastBorrowed</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

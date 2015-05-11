@@ -15,6 +15,13 @@ public:
     explicit addRemoveWindow(QWidget *parent = 0);
     ~addRemoveWindow();
 
+private slots:
+    void on_addButton_clicked();
+
+    void on_removeButton_clicked();
+
+    void on_buttonBox_rejected();
+
 private:
     Ui::addRemoveWindow *ui;
 };

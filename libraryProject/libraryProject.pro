@@ -18,17 +18,23 @@ SOURCES += main.cpp\
     createconnection.cpp \
     returnwindow.cpp \
     addremovewindow.cpp \
-    listauthorinsub.cpp
+    listauthorinsub.cpp \
+    listcheckedout.cpp \
+    lastborrowed.cpp
 
 HEADERS  += library.h \
     checkoutwindow.h \
     createconnection.h \
     returnwindow.h \
     addremovewindow.h \
-    listauthorinsub.h
+    listauthorinsub.h \
+    listcheckedout.h \
+    lastborrowed.h
 
 FORMS    += library.ui \
     checkoutwindow.ui \
     returnwindow.ui \
     addremovewindow.ui \
-    listauthorinsub.ui
+    listauthorinsub.ui \
+    listcheckedout.ui \
+    lastborrowed.ui
