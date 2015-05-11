@@ -3,6 +3,9 @@
 
 #include <string>
 #include <cppconn/statement.h>
+#include <cppconn/prepared_statement.h>
+#include <cppconn/resultset.h>
+#include <vector>
 #include "mysql_driver.h"
 #include "mysql_connection.h"
 
@@ -16,11 +19,13 @@ class	Connector
   sql::mysql::MySQL_Driver	*driver;
   sql::Connection		*con;
   sql::Statement		*stmt;
-  sql::ResultSet		*res;
+  sql::PreparedStatement	*prep_stmt;
 
  public:
+  sql::ResultSet		*res;
   Connector();
   ~Connector();
+  std::vector<sql::ResultSet*>	*getBooksFromAuthor(const char *author);
 };
 
 #endif

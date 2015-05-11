@@ -5,7 +5,7 @@
 int main(int argc, char *argv[ ])
 {
   Connector	c = Connector();
-  Window	w = Window(argc, argv);
+  Window	w = Window(argc, argv, &c);
 
   return 0;
 }
